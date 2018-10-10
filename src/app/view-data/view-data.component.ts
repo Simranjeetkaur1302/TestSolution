@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService} from '../user-data.service'
+import {User} from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-data',
@@ -8,11 +10,35 @@ import { UserDataService} from '../user-data.service'
 })
 export class ViewDataComponent implements OnInit {
 
-  displayedColumns = ['name','date_of_birth','email','github_address','twitter_address','city_of_residence','pincode'];
-  dataSource = ELEMENT_DATA;
+  constructor(private userDataService: UserDataService,private router: Router) { }
+  users : User[];
 
   ngOnInit() {
-  //  this.dataSource.paginator = this.paginator;
+    this.getUsers();
+  }
+
+
+  getUsers(): void {
+    this.userDataService.getUsers()
+    .subscribe(users => { this.users = users;
+    console.log("users",this.users) });
+  }
+
+
+  delete(user: User): void {
+    this.users = this.users.filter(h => h !== user);
+    this.userDataService.deleteUser(user).subscribe();
+  }
+
+  add():void {
+    this.router.navigate(['/addUser']);
+  }
+
+  edit(user : User) :void {
+
+    this.router.navigate(['/editUser', user]);
+   /*  this.users = this.users.filter(h => h !== user);
+    this.userDataService.updateUser(user).subscribe(); */
   }
  // @ViewChild(MatPaginator) paginator: MatPaginator;
  // dataSource = new UserDataSource(this.coverity_xrService,this.paginator);
@@ -27,17 +53,3 @@ export class ViewDataComponent implements OnInit {
 
 }
 
-export interface PeriodicElement {
-  name: string;
-  date_of_birth: string;
-  email: string;
-  github_address: string;
-  twitter_address: string;
-  city_of_residence: string,
-  pincode: string
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'abc', date_of_birth: 'Hydrogen', email: 'abc', github_address: 'H', twitter_address : "H",city_of_residence:"H",pincode:"h"},
-  {name: 'def', date_of_birth: 'Hydrogen', email: 'abc', github_address: 'H', twitter_address : "H",city_of_residence:"H",pincode:"h"},
-];

@@ -1,41 +1,34 @@
 
+<app-home></app-home>
+<p></p>
+<p></p>
 <div>
-  <table>
-    <tr >
-
+  <table border="1 px;" id="users" align="center">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>Email</th>
+      <th>Github Address</th>
+      <th>Twitter Address</th>
+       <th>City Of Residence</th>
+       <th>Pincode</th>
+       <th>Edit</th>
+       <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user?.id}}</td>
+  <td>{{user?.name}}</td>
+  <td>{{user?.date_of_birth}}</td>
+  <td>{{user?.email}}</td>
+  <td>{{user?.github_address}}</td>
+  <td>{{user?.twitter_address}}</td>
+  <td>{{user?.city_of_residence}}</td>
+  <td>{{user?.pincode}}</td>
+  <td> <button title="edit user"  (click)="edit(user)">Edit</button></td>
+  <td> <button title="delete user"
+    (click)="delete(user)">Delete</button></td>
     </tr>
   </table>
-  <!-- <table mat-table [dataSource]="dataSource" >
-   <ng-container matColumnDef="name">
-   <th mat-header-cell *matHeaderCellDef> Name </th>
-   <td mat-cell *matCellDef="let coverity_xr"> {{name}} </td>
-   </ng-container>
-   <ng-container matColumnDef="date_of_birth">
-   <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-   <td mat-cell *matCellDef="let coverity_xr"> {{date_of_birth}} </td>
-   </ng-container>
-   <ng-container matColumnDef="email">
-   <th mat-header-cell *matHeaderCellDef> Email </th>
-   <td mat-cell *matCellDef="let coverity_xr"> {{email}} </td>
-   </ng-container>
-   <ng-container matColumnDef="github_address">
-   <th mat-header-cell *matHeaderCellDef> GitHub Address </th>
-    <td mat-cell *matCellDef="let coverity_xr"> {{github_address}} </td>
-   </ng-container>
-   <ng-container matColumnDef="twitter_address">
-    <th mat-header-cell *matHeaderCellDef> Twitter Address </th>
-     <td mat-cell *matCellDef="let coverity_xr"> {{twitter_address}} </td>
-    </ng-container>
-    <ng-container matColumnDef="city_of_residence">
-      <th mat-header-cell *matHeaderCellDef> City of Residence </th>
-       <td mat-cell *matCellDef="let coverity_xr"> {{city_of_residence}} </td>
-      </ng-container>
-      <ng-container matColumnDef="pincode">
-        <th mat-header-cell *matHeaderCellDef> Pincode </th>
-         <td mat-cell *matCellDef="let coverity_xr"> {{pincode}} </td>
-      
-        </ng-container>
-   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table> -->
 </div>
+<router-outlet></router-outlet>

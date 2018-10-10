@@ -1,3 +1,84 @@
-<p>
-  edit-data works!
-</p>
+<app-home></app-home>
+<p></p>
+<p></p>
+<p>Edit User</p>
+<div class="container">
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="col-25">
+    <label>Id : </label>
+  </div>
+  <div class="col-75">
+      <input type="text" formControlName="id" required readonly>
+    </div>
+  </div>
+   
+  <div class="row">
+      <div class="col-25">
+    <label>Name : </label>
+  </div>
+  <div class="col-75">
+    <input type="text" formControlName="name">
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-25">
+      <label>Date of birth : </label>
+    </div>
+    <div class="col-75">
+      <input type="text" formControlName="date_of_birth">
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-25">
+        <label>Email : </label>
+      </div>
+      <div class="col-75">
+        <input type="text" formControlName="email">
+      </div>
+    </div>
+
+      <div class="row">
+    <div class="col-25">
+          <label>Github Address : </label>
+        </div>
+        <div class="col-75">
+          <input type="text" formControlName="github_address">
+        </div>
+      </div>
+
+        <div class="row">
+    <div class="col-25">
+            <label>Twitter Address : </label>
+          </div>
+          <div class="col-75">
+            <input type="text" formControlName="twitter_address">
+          </div>
+        </div>
+  
+        <div class="row">
+            <div class="col-25">
+              <label>City of Residence : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" formControlName="city_of_residence">
+            </div>
+          </div>
+
+           <div class="row">
+            <div class="col-25">
+                <label>Pincode : </label>
+              </div>
+              <div class="col-75">
+                <input type="text" formControlName="pincode">
+              </div>
+            </div>
+
+              <div class="row">
+                  <input type="submit" value="Submit">
+                <!-- <button>Submit Changes</button> -->
+              </div>
+  </form>
+</div>
